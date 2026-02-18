@@ -1,0 +1,7 @@
+@webapi_emergencias_HostAddress = http://localhost:5070
+
+GET {{webapi_emergencias_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+

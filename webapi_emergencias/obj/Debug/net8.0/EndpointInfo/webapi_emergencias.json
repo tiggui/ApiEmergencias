@@ -1,0 +1,445 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "webapi_emergencias",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Emergencias": {
+      "get": {
+        "tags": [
+          "Emergencias"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Emergencia"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Emergencia"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Emergencia"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Emergencias"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Descripcion",
+                  "Gravedad",
+                  "Tipo",
+                  "Urgencia"
+                ],
+                "type": "object",
+                "properties": {
+                  "IdEmergencia": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Descripcion": {
+                    "maxLength": 500,
+                    "minLength": 10,
+                    "type": "string"
+                  },
+                  "Tipo": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Gravedad": {
+                    "maxLength": 200,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Urgencia": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Foto": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Ruta": {
+                    "maxLength": 200,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Archivo": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "IdEmergencia": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                },
+                "Tipo": {
+                  "style": "form"
+                },
+                "Gravedad": {
+                  "style": "form"
+                },
+                "Urgencia": {
+                  "style": "form"
+                },
+                "Foto": {
+                  "style": "form"
+                },
+                "Ruta": {
+                  "style": "form"
+                },
+                "Archivo": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Emergencias/{id}": {
+      "get": {
+        "tags": [
+          "Emergencias"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Emergencia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Emergencias"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdEmergencia",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Descripcion",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 500,
+              "minLength": 10,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Tipo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 0,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Gravedad",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 200,
+              "minLength": 0,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Urgencia",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Foto",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "minLength": 0,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Ruta",
+            "in": "query",
+            "schema": {
+              "maxLength": 200,
+              "minLength": 0,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Archivo": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Archivo": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Emergencias"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Emergencia": {
+        "required": [
+          "descripcion",
+          "gravedad",
+          "tipo",
+          "urgencia"
+        ],
+        "type": "object",
+        "properties": {
+          "idEmergencia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descripcion": {
+            "maxLength": 500,
+            "minLength": 10,
+            "type": "string"
+          },
+          "tipo": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "gravedad": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
+          },
+          "urgencia": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "foto": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "ruta": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "archivo": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
